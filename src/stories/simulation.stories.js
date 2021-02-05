@@ -3,37 +3,20 @@ import * as reducer from "@repeat/feature/product_management/reducer"
 import {createStore, combineReducers} from "redux"
 import {A} from "@repeat/feature/product_management/simulation"
 import "../index.css"
+import { uniqueWorldLines, allWorldLines } from "@repeat/shared/helper"
 
 const stories = storiesOf("Product Management", module);
 
-runStory(A)
+allWorldLines(A).forEach(worldLine => {
+    const store = getStore(worldLine.actions);
+    stories.add(worldLine.path, () => worldLine.story(store))
+})
 
-function runStory(node, state = null, path="")
+
+function getStore(actions)
 {
-    const store = getStore(state)
-    node.actions.forEach(action => store.dispatch(action))
+    const store = createStore(combineReducers({ ...reducer }));
+    actions.forEach(action => store.dispatch(action))
 
-    if(state)
-        path += `.${node.id}`
-    else
-        path = node.id
-
-    stories.add(path, () => node.story(store))
-
-    node.children.forEach(child => {
-        runStory(child, store.getState(), path)
-    })
+    return store;
 }
-
-function getStore(state) 
-{
-    if(state)
-    {
-        return createStore(combineReducers({ ...reducer }), state);
-    }
-    else
-    {
-        return createStore(combineReducers({ ...reducer }));
-    }
-}
-

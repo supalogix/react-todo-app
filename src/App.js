@@ -12,7 +12,7 @@ const PRODUCT_ID = "1";
 
 // Homebrew logging 
 const logger = store => next => action => {
-  console.log(action)
+  //console.log(action)
   next(action)
 }
 

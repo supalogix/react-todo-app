@@ -3,34 +3,17 @@ import App from './App';
 import * as reducer from "@repeat/feature/product_management/reducer"
 import {createStore, combineReducers} from "redux"
 import {A} from "@repeat/feature/product_management/simulation"
+import { uniqueWorldLines, allWorldLines } from "@repeat/shared/helper"
 
-runTest(A)
+allWorldLines(A).forEach(node => {
+    const state = getState(node.actions)
+    test(node.path, () => node.executePostcondition(state))
+})
 
-function runTest(node, state = null, path="")
+function getState(actions)
 {
-    const store = getStore(state)
-    node.actions.forEach(action => store.dispatch(action))
+    const store = createStore(combineReducers({ ...reducer }));
+    actions.forEach(action => store.dispatch(action))
 
-    if(state)
-        path += `.${node.id}`
-    else
-        path = node.id
-
-    test(path, () => node.executePostcondition(store.getState()))
-
-    node.children.forEach(child => {
-        runTest(child, store.getState(), path)
-    })
-}
-
-function getStore(state) 
-{
-    if(state)
-    {
-        return createStore(combineReducers({ ...reducer }), state);
-    }
-    else
-    {
-        return createStore(combineReducers({ ...reducer }));
-    }
+    return store.getState()
 }

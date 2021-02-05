@@ -5,7 +5,7 @@ import {Provider} from "react-redux"
 import * as Action from "../action"
 import {expect} from "chai"
 
-const addChild = (parent, child) => {
+const attachWorld = (parent, child) => {
     parent.children.push(child)
 }
 
@@ -420,16 +420,15 @@ export const M = {
     children: []
 }
 
-
-addChild(A, B)
-addChild(B, C)
-addChild(C, D)
-addChild(C, E)
-addChild(C, F)
-addChild(C, G)
-addChild(C, H)
-addChild(C, I)
-addChild(C, J)
-addChild(C, K)
-addChild(C, L)
-addChild(D, M)
+attachWorld(A, B)
+    attachWorld(B, C)
+        attachWorld(C, D)
+            attachWorld(D, M)
+        attachWorld(C, E)
+        attachWorld(C, F)
+        attachWorld(C, G)
+        attachWorld(C, H)
+        attachWorld(C, I)
+        attachWorld(C, J)
+        attachWorld(C, K)
+        attachWorld(C, L)
