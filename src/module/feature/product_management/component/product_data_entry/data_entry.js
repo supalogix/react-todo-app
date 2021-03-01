@@ -8,20 +8,25 @@ import * as Selector from "../../selector"
 import {v4} from "uuid"
 import cx from "classnames"
 import {createSelector} from "reselect"
+import PropTypes from "prop-types"
 
 const createTagError = (tag) => {
-    if(tag.tagStatus === 1)
-        return <div className="pde_field__error_message">
-            <FontAwesomeIcon icon={faExclamationTriangle} /> 
-            <span>Tag Name can not be empty</span>
-        </div>
-    else if (tag.tagStatus === 2)
-        return <div className="pde_field__error_message">
-            <FontAwesomeIcon icon={faExclamationTriangle} /> 
-            <span>Duplicate tags are not allowed.</span>
-        </div>
-    else
-        return null
+    switch(tag)
+    {
+        case 1:
+            return <div className="pde_field__error_message">
+                <FontAwesomeIcon icon={faExclamationTriangle} /> 
+                <span>Tag Name can not be empty</span>
+            </div>
+        case 2:
+            return <div className="pde_field__error_message">
+                <FontAwesomeIcon icon={faExclamationTriangle} /> 
+                <span>Duplicate tags are not allowed.</span>
+            </div>
+        default:
+            return null
+
+    }
 }
 
 const createTags = props => props.tags.map(tag => {
@@ -36,7 +41,7 @@ const createTags = props => props.tags.map(tag => {
     </div>
 })
 
-export const createTitleError = props => {
+const createTitleError = props => {
     if(props.titleStatus === 1)
         return <div className="pde_field__error_message">
             <FontAwesomeIcon icon={faExclamationTriangle} /> 
@@ -46,7 +51,7 @@ export const createTitleError = props => {
         return null
 }
 
-export const createVendorError = props => {
+const createVendorError = props => {
     if(props.vendorStatus === 1)
         return <div className="pde_field__error_message">
             <FontAwesomeIcon icon={faExclamationTriangle} /> 
@@ -56,7 +61,7 @@ export const createVendorError = props => {
         return null
 }
 
-export const createTitle = props => {
+const createTitle = props => {
     const TitleError = createTitleError(props);
 
     return <div className="pde_field">
@@ -68,7 +73,7 @@ export const createTitle = props => {
     </div>
 }
 
-export const createVendor = props => {
+const createVendor = props => {
     const VendorError = createVendorError(props);
 
     return <div className="pde_field">
@@ -80,6 +85,9 @@ export const createVendor = props => {
     </div>
 }
 
+/**
+ * A Component 
+ */
 export const DataEntry = (props) => {
     const Title = createTitle(props)
     const Vendor = createVendor(props)
@@ -114,6 +122,32 @@ export const DataEntry = (props) => {
             <div className="pde_input__button">Save</div>
         </div>
     </div>
+}
+
+DataEntry.propTypes = {
+    /**
+     * Title
+     */
+    title: PropTypes.string.isRequired,
+    /**
+     * Title Status
+     */
+    titleStatus: PropTypes.string.isRequired,
+    vendor: PropTypes.string.isRequired,
+    vendorStatus: PropTypes.string.isRequired,
+    replenishable: PropTypes.bool.isRequired,
+    productStatus: PropTypes.string.isRequired,
+    tags: PropTypes.string.isRequired
+}
+
+DataEntry.defaultProps = {
+    onTitleChanged: () => {},
+    onVendorChanged: () => {},
+    onReplenishableChanged: () => {},
+    onStatusChanged: () => {},
+    onTagAdded: () => {},
+    onTagRemoved: () => {},
+    onTagChanged: () => {}
 }
 
 const enableReplenisableStyle = createSelector(

@@ -28,7 +28,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "docs": "jsdoc -c jsdoc.conf.json"
   },
   "eslintConfig": {
     "extends": [
@@ -55,7 +56,10 @@
     "@storybook/node-logger": "^6.1.11",
     "@storybook/preset-create-react-app": "^3.1.5",
     "@storybook/react": "^6.1.11",
-    "chai": "^4.2.0"
+    "better-docs": "^2.3.2",
+    "chai": "^4.2.0",
+    "jsdoc": "^3.6.6",
+    "react-styleguidist": "^11.1.5"
   },
   "workspaces": [
     "./src/module/feature",

@@ -8,14 +8,18 @@ import DataEntry from "./product_data_entry/data_entry"
 
 
 export const ProductDataEntry = (props) => {
-    if(props.mode === ModeEnum.NOT_STARTED)
-        return <NotStarted />
-    else if(props.mode === ModeEnum.FETCHING_DATA)
-        return <FetchingData />
-    else if(props.mode === ModeEnum.ERROR_FETCHING_DATA)
-        return <ErrorFetchingData />
-    else 
-        return <DataEntry />
+    switch(props.mode)
+    {
+        case ModeEnum.NOT_STARTED:
+            return <props.NotStarted />
+        case ModeEnum.FETCHING_DATA:
+            return <props.FetchingData />
+        case ModeEnum.ERROR_FETCHING_DATA:
+            return <props.ErrorFetchingData />
+        default:
+            return <props.DataEntry />
+
+    }
 }
 
 export const selectorFactory = dispatch => state => {
@@ -24,7 +28,11 @@ export const selectorFactory = dispatch => state => {
     } = state.productManagement;
 
     return {
-        mode
+        mode,
+        NotStarted,
+        FetchingData,
+        ErrorFetchingData,
+        DataEntry
     }
 }
 

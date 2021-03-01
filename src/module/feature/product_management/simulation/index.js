@@ -6,13 +6,9 @@ import * as Action from "../action"
 import * as Event from "../event"
 import {expect} from "chai"
 
-const attachWorld = (parent, child) => {
-    parent.children.push(child)
-}
-
 export const A = {
     id: "A",
-    name: "Start Managing Product",
+    name: "Enter Page",
     description: [
 
     ],
@@ -43,7 +39,6 @@ export const A = {
             <ProductManagement />
         </Provider>
     },
-    children: []
 }
 
 export const B = {
@@ -70,7 +65,6 @@ export const B = {
             <ProductManagement />
         </Provider>
     },
-    children: []
 }
 
 export const C = {
@@ -143,7 +137,6 @@ export const C = {
             <ProductManagement />
         </Provider>
     },
-    children: []
 }
 
 export const D = {
@@ -171,7 +164,6 @@ export const D = {
             <ProductManagement />
         </Provider>
     },
-    children: []
 }
 
 export const E = {
@@ -199,7 +191,6 @@ export const E = {
             <ProductManagement />
         </Provider>
     },
-    children: []
 }
 
 export const F = {
@@ -227,7 +218,6 @@ export const F = {
             <ProductManagement />
         </Provider>
     },
-    children: []
 }
 
 export const G = {
@@ -255,7 +245,6 @@ export const G = {
             <ProductManagement />
         </Provider>
     },
-    children: []
 }
 
 export const H = {
@@ -283,7 +272,6 @@ export const H = {
             <ProductManagement />
         </Provider>
     },
-    children: []
 }
 
 export const I = {
@@ -310,7 +298,6 @@ export const I = {
             <ProductManagement />
         </Provider>
     },
-    children: []
 }
 
 export const J = {
@@ -338,7 +325,6 @@ export const J = {
             <ProductManagement />
         </Provider>
     },
-    children: []
 }
 
 export const K = {
@@ -366,7 +352,6 @@ export const K = {
             <ProductManagement />
         </Provider>
     },
-    children: []
 }
 
 export const L = {
@@ -392,7 +377,6 @@ export const L = {
             <ProductManagement />
         </Provider>
     },
-    children: []
 }
 
 export const M = {
@@ -418,18 +402,11 @@ export const M = {
             <ProductManagement />
         </Provider>
     },
-    children: []
 }
 
-attachWorld(A, B)
-    attachWorld(B, C)
-        attachWorld(C, D)
-            attachWorld(D, M)
-                attachWorld(M, L)
-        attachWorld(C, E)
-            attachWorld(E, F)
-                attachWorld(F, G)
-                    attachWorld(G, H)
-                        attachWorld(H, I)
-        attachWorld(C, J)
-            attachWorld(J, K)
+
+export const simulations = [
+    [A, B, C, D, M, L],
+    [A, B, C, E, F, G, H, I],
+    [A, B, C, J, K]
+];

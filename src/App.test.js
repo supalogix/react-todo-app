@@ -1,14 +1,41 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
 import * as reducer from "@repeat/feature/product_management/reducer"
 import {createStore, combineReducers} from "redux"
-import {A} from "@repeat/feature/product_management/simulation"
-import { uniqueWorldLines, allWorldLines, getCustomerJourney } from "@repeat/shared/helper"
+import {simulations} from "@repeat/feature/product_management/simulation"
 
-console.log(getCustomerJourney(A)[2])
-uniqueWorldLines(A).forEach(node => {
-    const state = getState(node.actions)
-    test(node.path, () => node.executePostcondition(state))
+const getPath = simulation => {
+    let path = "";
+
+    simulation.forEach(world => {
+        path += world.id + "."
+    })
+
+    return path.slice(0, path.length-1)
+}
+
+simulations.forEach(simulation => {
+    const path = getPath(simulation)
+
+    describe(`${path}`, () => {
+        describe("preconditions", () => {
+            let actions = []
+            simulation.forEach(node => {
+                const preconditionState = getState(actions);
+                test(`${node.id}: ${node.name}`, 
+                    () => node.executePrecondition(preconditionState))
+                actions = actions.concat(node.actions)
+            })
+        })
+
+        describe("postconditions", () => {
+            let actions = []
+            simulation.forEach(node => {
+                actions = actions.concat(node.actions)
+                const postconditionState = getState(actions);
+                test(`${node.id}: ${node.name}`, 
+                    () => node.executePostcondition(postconditionState))
+            })
+        })
+    })
 })
 
 function getState(actions)

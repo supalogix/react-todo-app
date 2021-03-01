@@ -2,7 +2,6 @@ import initialState from "./initial_state"
 import produce from "immer"
 import * as Action from "../action"
 import * as Event from "../event"
-import {v4} from "uuid"
 import { ModeEnum } from "../enum"
 
 export const productManagement = produce((draft, action) => {

@@ -1,21 +1,27 @@
 import {storiesOf} from "@storybook/react"
 import * as reducer from "@repeat/feature/product_management/reducer"
 import {createStore, combineReducers} from "redux"
-import {A} from "@repeat/feature/product_management/simulation"
+import {simulations} from "@repeat/feature/product_management/simulation"
 import "../index.css"
-import { uniqueWorldLines, allWorldLines, getCustomerJourney } from "@repeat/shared/helper"
 
-const stories = storiesOf("Product Management", module);
 
-allWorldLines(A).forEach(worldLine => {
-    const store = getStore(worldLine.actions);
-    stories.add(worldLine.path, () => worldLine.story(store))
-})
+const getPath = simulation => {
+    let path = "";
 
-getCustomerJourney(A).forEach(simulation => {
-    const journey = storiesOf(`${simulation.path}`, module)
+    simulation.forEach(world => {
+        path += world.id + "."
+    })
+
+    return path.slice(0, path.length-1)
+}
+
+simulations.forEach(simulation => {
+    const path = getPath(simulation)
+
+    const journey = storiesOf(path, module)
     let actions = []
-    simulation.nodes.forEach(node => {
+
+    simulation.forEach(node => {
         actions = actions.concat(node.actions)
         const store = getStore(actions);
         journey.add(`${node.id}: ${node.name}`, () => node.story(store))
