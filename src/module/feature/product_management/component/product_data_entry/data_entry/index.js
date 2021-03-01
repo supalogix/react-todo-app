@@ -103,11 +103,11 @@ export const sfDataEntry = dispatch => state => {
         productStatus,
         tags: Selector.tags(state),
         onTitleChanged: (e) => dispatch(Event.titleChanged(e.target.value)),
-        onVendorChanged: (e) => dispatch(Action.changeVendor(e.target.value)),
+        onVendorChanged: (e) => dispatch(Event.changeVendor(e.target.value)),
         onReplenishableChanged: (value) => () => dispatch(Action.changeReplenishable(value)),
         onStatusChanged: (option) => () => dispatch(Action.changeProductStatus(option)),
-        onTagAdded: () => dispatch(Action.addTag(v4())),
-        onTagRemoved: (id) => () => dispatch(Action.removeTag(id)),
+        onTagAdded: () => dispatch(Action.tagAdded(v4())),
+        onTagRemoved: (id) => () => dispatch(Event.tagRemoved(id)),
         onTagChanged: (id) => (e) => dispatch(Action.changeTag(id, e.target.value))
     }
 }

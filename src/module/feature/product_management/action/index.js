@@ -37,39 +37,6 @@ export const changeTitle = (title) => ({
     }
 })
 
-export const ADD_TAG = `${ProductManagement} Add Tag`
-export const addTag = (tagId) => ({
-    type: ADD_TAG,
-    payload: {
-        tagId
-    }
-})
-
-export const REMOVE_TAG = `${ProductManagement} Remove Tag`
-export const removeTag = (tagId) => ({
-    type: REMOVE_TAG,
-    payload: {
-        tagId
-    }
-})
-
-export const CHANGE_TAG = `${ProductManagement} Change Tag`
-export const changeTag = (tagId, tagName) => ({
-    type: CHANGE_TAG,
-    payload: {
-        tagId,
-        tagName
-    }
-})
-
-export const CHANGE_VENDOR = `${ProductManagement} Change Vendor`
-export const changeVendor = (vendorName) => ({
-    type: CHANGE_VENDOR,
-    payload: {
-        vendorName
-    }
-})
-
 export const CHANGE_REPLENISHABLE = `${ProductManagement} Change Replenishable`
 export const changeReplenishable = (value) => ({
     type: CHANGE_REPLENISHABLE,

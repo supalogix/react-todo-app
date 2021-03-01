@@ -7,26 +7,25 @@ import { ModeEnum } from "../enum"
 export const productManagement = produce((draft, action) => {
     switch(action.type)
     {
-        case Action.CHANGE_TITLE:
-        case Event.TitleChanged:
+        case Event.Type.TitleChanged:
             draft.title = action.payload.title
             break;
 
-        case Action.CHANGE_VENDOR:
+        case Event.Type.VendorChanged:
             draft.vendor = action.payload.vendorName
             break;
         
-        case Action.REMOVE_TAG:
+        case Event.Type.TagRemoved:
             const index = draft.tagIds.indexOf(action.payload.tagId)
             draft.tagIds.splice(index, 1)
             break;
         
-        case Action.ADD_TAG:
+        case Event.Type.TagAdded:
             draft.tagIds.push(action.payload.tagId);
             draft.tagName[action.payload.tagId] = "";
             break;
         
-        case Action.CHANGE_TAG:
+        case Event.Type.TagChanged:
             draft.tagName[action.payload.tagId] = action.payload.tagName
             break;
 

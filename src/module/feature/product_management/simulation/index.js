@@ -182,7 +182,7 @@ export const Ae = {
         "PM-004"
     ],
     actions: [
-        Action.changeVendor("")
+        Event.vendorChanged("")
     ],
     executePrecondition: (state) => {
         expect(state.productManagement.mode).to.equal(
@@ -270,7 +270,7 @@ export const Ah = {
 
     ],
     actions: [
-        Action.changeTag("a", "Tag 1")
+        Event.tagChanged("a", "Tag 1")
     ],
     executePrecondition: (state) => {
         expect(state.productManagement.mode).to.equal(
@@ -299,7 +299,7 @@ export const Ai = {
         "PM-002"
     ],
     actions: [
-        Action.changeTag("a", "")
+        Event.tagChanged("a", "")
     ],
     executePrecondition: (state) => {
         expect(state.productManagement.mode).to.equal(
@@ -328,7 +328,7 @@ export const Aj = {
         "PM-003"
     ],
     actions: [
-        Action.changeTag("a", "Flash Memory")
+        Event.tagChanged("a", "Flash Memory")
     ],
     executePrecondition: (state) => {
         expect(state.productManagement.mode).to.equal(
@@ -358,7 +358,7 @@ export const Ak = {
         "PM-010"
     ],
     actions: [
-        Action.addTag("l")
+        Event.tagAdded("l")
     ],
     executePrecondition: (state) => {
         expect(state.productManagement.mode).to.equal(
@@ -388,7 +388,7 @@ export const Al = {
         "PM-011"
     ],
     actions: [
-        Action.removeTag("a")
+        Event.tagRemoved("a")
     ],
     executePrecondition: (state) => {
         expect(state.productManagement.mode).to.equal(
