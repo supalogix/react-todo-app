@@ -45,13 +45,7 @@ export const DataEntry = (props) => {
 }
 
 DataEntry.propTypes = {
-    /**
-     * Title
-     */
     title: PropTypes.string.isRequired,
-    /**
-     * Title Status
-     */
     titleStatus: PropTypes.string.isRequired,
     vendor: PropTypes.string.isRequired,
     vendorStatus: PropTypes.string.isRequired,

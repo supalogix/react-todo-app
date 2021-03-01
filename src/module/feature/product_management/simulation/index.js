@@ -12,7 +12,7 @@ export const getAllActions = simulation => simulation.reduce((actions, node) => 
 
 export const Aa = {
     id: "Aa",
-    name: "Enter Page",
+    name: "Enter Product Data Entry Page",
     description: [
 
     ],
