@@ -1,39 +1,4 @@
 import React from "react"
-import { connectAdvanced } from "react-redux"
-import { ModeEnum } from "@app/feature/product_management/enum"
-import NotStarted from "./product_data_entry/not_started"
-import FetchingData from "./product_data_entry/fetching_data"
-import ErrorFetchingData from "./product_data_entry/error_fetching_data"
-import DataEntry from "./product_data_entry/data_entry"
+import ProductDataEntry from "./product_data_entry"
 
-
-export const ProductDataEntry = (props) => {
-    switch(props.mode)
-    {
-        case ModeEnum.NOT_STARTED:
-            return <props.NotStarted />
-        case ModeEnum.FETCHING_DATA:
-            return <props.FetchingData />
-        case ModeEnum.ERROR_FETCHING_DATA:
-            return <props.ErrorFetchingData />
-        default:
-            return <props.DataEntry />
-
-    }
-}
-
-export const selectorFactory = dispatch => state => {
-    const {
-        mode
-    } = state.productManagement;
-
-    return {
-        mode,
-        NotStarted,
-        FetchingData,
-        ErrorFetchingData,
-        DataEntry
-    }
-}
-
-export default connectAdvanced(selectorFactory)(ProductDataEntry)
+export default ProductDataEntry
