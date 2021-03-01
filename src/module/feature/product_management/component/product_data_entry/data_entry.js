@@ -11,7 +11,7 @@ import {createSelector} from "reselect"
 import PropTypes from "prop-types"
 
 const createTagError = (tag) => {
-    switch(tag)
+    switch(tag.tagStatus)
     {
         case 1:
             return <div className="pde_field__error_message">

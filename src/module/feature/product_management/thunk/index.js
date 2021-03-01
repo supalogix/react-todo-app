@@ -1,4 +1,4 @@
-import * as Action from "@repeat/feature/product_management/action"
+import * as Action from "@app/feature/product_management/action"
 
 
 export const getProduct = (id) => async (dispatch, getState) => {

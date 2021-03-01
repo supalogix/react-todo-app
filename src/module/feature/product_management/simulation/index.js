@@ -1,6 +1,6 @@
 import React from "react"
-import ProductManagement from "@repeat/feature/product_management/component"
-import {ModeEnum} from "@repeat/feature/product_management/enum"
+import ProductManagement from "@app/feature/product_management/component"
+import {ModeEnum} from "@app/feature/product_management/enum"
 import {Provider} from "react-redux"
 import * as Action from "../action"
 import * as Event from "../event"

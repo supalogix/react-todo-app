@@ -1,6 +1,6 @@
 import React from "react"
 import { connectAdvanced } from "react-redux"
-import { ModeEnum } from "@repeat/feature/product_management/enum"
+import { ModeEnum } from "@app/feature/product_management/enum"
 import NotStarted from "./product_data_entry/not_started"
 import FetchingData from "./product_data_entry/fetching_data"
 import ErrorFetchingData from "./product_data_entry/error_fetching_data"

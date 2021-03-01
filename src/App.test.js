@@ -1,6 +1,6 @@
-import * as reducer from "@repeat/feature/product_management/reducer"
+import * as reducer from "@app/feature/product_management/reducer"
 import {createStore, combineReducers} from "redux"
-import {simulations} from "@repeat/feature/product_management/simulation"
+import {simulations} from "@app/feature/product_management/simulation"
 
 const getPath = simulation => {
     let path = "";

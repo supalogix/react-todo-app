@@ -1,10 +1,10 @@
 import React from "react";
 import {createStore, applyMiddleware, combineReducers} from "redux"
 import {Provider} from "react-redux"
-import * as reducer from "@repeat/feature/product_management/reducer"
-import ProductManagement from "@repeat/feature/product_management/component"
+import * as reducer from "@app/feature/product_management/reducer"
+import ProductManagement from "@app/feature/product_management/component"
 import thunk from "redux-thunk"
-import * as pmThunk from "@repeat/feature/product_management/thunk"
+import * as pmThunk from "@app/feature/product_management/thunk"
 
 // Use this ID to fetch the correct product from the API
 // eslint-disable-next-line

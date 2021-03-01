@@ -3,7 +3,7 @@
 This is an example
 
 ```js
-import {DataEntry} from "@repeat/feature/product_management/component/product_data_entry/data_entry";
+import {DataEntry} from "@appature/product_management/component/product_data_entry/data_entry";
 <DataEntry 
     styles={{}}
     title="title" 
@@ -16,7 +16,7 @@ import {DataEntry} from "@repeat/feature/product_management/component/product_da
 This is an example
 
 ```js
-import {DataEntry} from "@repeat/feature/product_management/component/product_data_entry/data_entry";
+import {DataEntry} from "@appature/product_management/component/product_data_entry/data_entry";
 <DataEntry 
     styles={{}}
     title="title" 
