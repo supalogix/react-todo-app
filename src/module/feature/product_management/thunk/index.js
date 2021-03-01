@@ -39,6 +39,6 @@ export const saveProduct = () => async (dispatch, getState) => {
 
     // simulate saving data
     setTimeout(() => {
-        dispatch(Action.confirmSavedChanges())
+        dispatch(Event.changesSaved())
     }, 1000)
 }

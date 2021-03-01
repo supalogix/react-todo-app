@@ -62,3 +62,9 @@ export const receiveProductDetails = payload => ({
     type: Type.ReceiveProductDetails,
     payload
 })
+
+Type.ChangesSaved = "Changes Saved"
+export const changesSaved = () => ({
+    type: Type.ChangesSaved,
+    payload: {}
+})
