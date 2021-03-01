@@ -156,7 +156,9 @@ export const D = {
         Event.titleChanged("")
     ],
     executePrecondition: (state) => {
-
+        expect(state.productManagement.mode).to.equal(
+            ModeEnum.EDITING_DATA
+        );
     },
     executePostcondition: (state) => {
         expect(state.productManagement.title).to.equal(
@@ -183,7 +185,9 @@ export const E = {
         Action.changeVendor("")
     ],
     executePrecondition: (state) => {
-
+        expect(state.productManagement.mode).to.equal(
+            ModeEnum.EDITING_DATA
+        );
     },
     executePostcondition: (state) => {
         expect(state.productManagement.vendor).to.equal(
@@ -210,7 +214,9 @@ export const F = {
         Action.changeReplenishable(false)
     ],
     executePrecondition: (state) => {
-
+        expect(state.productManagement.mode).to.equal(
+            ModeEnum.EDITING_DATA
+        );
     },
     executePostcondition: (state) => {
         expect(state.productManagement.replenishable).to.equal(
@@ -237,6 +243,9 @@ export const G = {
         Action.changeProductStatus("draft")
     ],
     executePrecondition: (state) => {
+        expect(state.productManagement.mode).to.equal(
+            ModeEnum.EDITING_DATA
+        );
 
     },
     executePostcondition: (state) => {
@@ -264,6 +273,9 @@ export const H = {
         Action.changeTag("a", "Tag 1")
     ],
     executePrecondition: (state) => {
+        expect(state.productManagement.mode).to.equal(
+            ModeEnum.EDITING_DATA
+        );
 
     },
     executePostcondition: (state) => {
@@ -290,6 +302,9 @@ export const I = {
         Action.changeTag("a", "")
     ],
     executePrecondition: (state) => {
+        expect(state.productManagement.mode).to.equal(
+            ModeEnum.EDITING_DATA
+        );
     },
     executePostcondition: (state) => {
         expect(state.productManagement.tagName.a).to.equal(
@@ -316,6 +331,9 @@ export const J = {
         Action.changeTag("a", "Flash Memory")
     ],
     executePrecondition: (state) => {
+        expect(state.productManagement.mode).to.equal(
+            ModeEnum.EDITING_DATA
+        );
 
     },
     executePostcondition: (state) => {
@@ -343,6 +361,9 @@ export const K = {
         Action.addTag("l")
     ],
     executePrecondition: (state) => {
+        expect(state.productManagement.mode).to.equal(
+            ModeEnum.EDITING_DATA
+        );
 
     },
     executePostcondition: (state) => {
@@ -370,7 +391,9 @@ export const L = {
         Action.removeTag("a")
     ],
     executePrecondition: (state) => {
-
+        expect(state.productManagement.mode).to.equal(
+            ModeEnum.EDITING_DATA
+        );
     },
     executePostcondition: (state) => {
 
@@ -395,10 +418,15 @@ export const M = {
         Event.titleChanged("Some Title")
     ],
     executePrecondition: (state) => {
+        expect(state.productManagement.mode).to.equal(
+            ModeEnum.EDITING_DATA
+        );
 
     },
     executePostcondition: (state) => {
-
+        expect(state.productManagement.title).to.equal(
+            "Some Title"
+        );
     },
     story: (store) => {
         return <Provider store={store}>
