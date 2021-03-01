@@ -1,4 +1,11 @@
-export const ProductManagement = "[Product Management]"
+export const ProductManagement = "[Product Management]";
+
+export const __module__ = "[ProductManagement]";
+
+export const Type = {
+    GetProductDetails: `${__module__} Get Product Details`,
+    SendProductDetails: `${__module__} Send Product Details`
+}
 
 export const GET_PRODUCT_DETAILS = `${ProductManagement} Get Product Details`
 export const getProductDetails = (id) => ({

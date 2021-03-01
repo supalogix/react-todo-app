@@ -3,9 +3,10 @@ import App from './App';
 import * as reducer from "@repeat/feature/product_management/reducer"
 import {createStore, combineReducers} from "redux"
 import {A} from "@repeat/feature/product_management/simulation"
-import { uniqueWorldLines, allWorldLines } from "@repeat/shared/helper"
+import { uniqueWorldLines, allWorldLines, getCustomerJourney } from "@repeat/shared/helper"
 
-allWorldLines(A).forEach(node => {
+console.log(getCustomerJourney(A)[2])
+uniqueWorldLines(A).forEach(node => {
     const state = getState(node.actions)
     test(node.path, () => node.executePostcondition(state))
 })

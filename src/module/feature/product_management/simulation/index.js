@@ -3,6 +3,7 @@ import ProductManagement from "@repeat/feature/product_management/component"
 import {ModeEnum} from "@repeat/feature/product_management/enum"
 import {Provider} from "react-redux"
 import * as Action from "../action"
+import * as Event from "../event"
 import {expect} from "chai"
 
 const attachWorld = (parent, child) => {
@@ -47,7 +48,7 @@ export const A = {
 
 export const B = {
     id: "B",
-    name: "",
+    name: "Get Product Details",
     description: [
     ],
     acceptanceCriteria: [
@@ -74,7 +75,7 @@ export const B = {
 
 export const C = {
     id: "C",
-    name: "",
+    name: "Recieve Product Details",
     description: [ ],
     acceptanceCriteria: [
         "PM-013"
@@ -147,7 +148,7 @@ export const C = {
 
 export const D = {
     id: "D",
-    name: "",
+    name: "Change title to empty string",
     description: [
 
     ],
@@ -155,7 +156,7 @@ export const D = {
         "PM-001"
     ],
     actions: [
-        Action.changeTitle("")
+        Event.titleChanged("")
     ],
     executePrecondition: (state) => {
 
@@ -175,7 +176,7 @@ export const D = {
 
 export const E = {
     id: "E",
-    name: "",
+    name: "Change vendor to empty string",
     description: [
 
     ],
@@ -203,7 +204,7 @@ export const E = {
 
 export const F = {
     id: "F",
-    name: "",
+    name: "Set Replenishable to false",
     description: [
 
     ],
@@ -231,7 +232,7 @@ export const F = {
 
 export const G = {
     id: "G",
-    name: "",
+    name: "Set Product to Draft",
     description: [
 
     ],
@@ -259,7 +260,7 @@ export const G = {
 
 export const H = {
     id: "H",
-    name: "",
+    name: "Change first tag to 'Tag 1'",
     description: [
 
     ],
@@ -287,7 +288,7 @@ export const H = {
 
 export const I = {
     id: "I",
-    name: "",
+    name: "Change first tag to empty string",
     description: [
     ],
     acceptanceCriteria: [
@@ -314,7 +315,7 @@ export const I = {
 
 export const J = {
     id: "J",
-    name: "",
+    name: "Change first tag to 'Flash Memory'",
     description: [
 
     ],
@@ -342,7 +343,7 @@ export const J = {
 
 export const K = {
     id: "K",
-    name: "",
+    name: "Add a new tag",
     description: [
 
     ],
@@ -370,7 +371,7 @@ export const K = {
 
 export const L = {
     id: "L",
-    name: "",
+    name: "Remove first tag",
     description: [
 
     ],
@@ -396,7 +397,7 @@ export const L = {
 
 export const M = {
     id: "M",
-    name: "",
+    name: "Change title to 'Some Title'",
     description: [
 
     ],
@@ -404,7 +405,7 @@ export const M = {
 
     ],
     actions: [
-        Action.changeTitle("Some Title")
+        Event.titleChanged("Some Title")
     ],
     executePrecondition: (state) => {
 

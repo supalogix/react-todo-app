@@ -96,7 +96,39 @@ export const getUniqueWorldLines = (node, path = "", actions = []) => {
 	return log
 }
 
+
 export const uniqueWorldLines = (node) => {
 	const items = getUniqueWorldLines(node)
 	return items
+}
+
+export const getCustomerJourney = (node, path = "", nodes = []) => {
+	let log = []
+
+	const {
+		children,
+		...props
+	} = node
+
+	nodes = nodes.concat(props)
+	path += node.id
+
+	if(node.children.length === 0)
+	{
+		return {
+			path,
+			nodes
+		}
+	}
+	else
+	{
+		path += "."
+
+		node.children.forEach(child => {
+			const newPaths = getCustomerJourney(child, path, nodes)
+			log = log.concat(newPaths)
+		})
+
+		return log
+	}
 }
