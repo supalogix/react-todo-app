@@ -57,7 +57,10 @@ DataEntry.propTypes = {
     vendorStatus: PropTypes.string.isRequired,
     replenishable: PropTypes.bool.isRequired,
     productStatus: PropTypes.string.isRequired,
-    tags: PropTypes.string.isRequired
+    tags: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        tagName: PropTypes.string.isRequired
+    }))
 }
 
 DataEntry.defaultProps = {
