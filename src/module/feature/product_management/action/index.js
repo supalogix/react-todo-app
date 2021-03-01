@@ -1,12 +1,5 @@
 export const ProductManagement = "[Product Management]";
 
-export const __module__ = "[ProductManagement]";
-
-export const Type = {
-    GetProductDetails: `${__module__} Get Product Details`,
-    SendProductDetails: `${__module__} Send Product Details`
-}
-
 export const GET_PRODUCT_DETAILS = `${ProductManagement} Get Product Details`
 export const getProductDetails = (id) => ({
     type: GET_PRODUCT_DETAILS,
@@ -15,41 +8,11 @@ export const getProductDetails = (id) => ({
     }
 })
 
-export const SEND_PRODUCT_DETAILS = `${ProductManagement} Send Product Details`
-export const sendProductDetails = (payload) => ({
-    type: SEND_PRODUCT_DETAILS,
-    payload
-})
-
 export const SEND_PRODUCT_DETAILS_ERROR = `${ProductManagement} Send Product Details Error`
 export const sendProductDetailsError = (message) => ({
     type: SEND_PRODUCT_DETAILS_ERROR,
     payload: {
         message
-    }
-})
-
-export const CHANGE_TITLE = `${ProductManagement} Change Title`
-export const changeTitle = (title) => ({
-    type: CHANGE_TITLE,
-    payload: {
-        title
-    }
-})
-
-export const CHANGE_REPLENISHABLE = `${ProductManagement} Change Replenishable`
-export const changeReplenishable = (value) => ({
-    type: CHANGE_REPLENISHABLE,
-    payload: {
-        value
-    }
-})
-
-export const CHANGE_PRODUCT_STATUS = `${ProductManagement} Change Product Status`
-export const changeProductStatus = (value) => ({
-    type: CHANGE_PRODUCT_STATUS,
-    payload: {
-        value
     }
 })
 

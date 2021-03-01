@@ -1,11 +1,12 @@
 import * as Action from "@app/feature/product_management/action"
+import * as Event from "@app/feature/product_management/event"
 
 
 export const getProduct = (id) => async (dispatch, getState) => {
     dispatch(Action.getProductDetails(id))
 
     setTimeout(() => {
-        dispatch(Action.sendProductDetails({
+        dispatch(Event.receiveProductDetails({
             status: "active", // "active" | "archived" | "draft",
             title: "IPod Nano - 8GB",
             tags: [

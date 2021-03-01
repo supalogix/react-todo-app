@@ -104,11 +104,11 @@ export const sfDataEntry = dispatch => state => {
         tags: Selector.tags(state),
         onTitleChanged: (e) => dispatch(Event.titleChanged(e.target.value)),
         onVendorChanged: (e) => dispatch(Event.changeVendor(e.target.value)),
-        onReplenishableChanged: (value) => () => dispatch(Action.changeReplenishable(value)),
+        onReplenishableChanged: (value) => () => dispatch(Event.replenishableChanged(value)),
         onStatusChanged: (option) => () => dispatch(Action.changeProductStatus(option)),
         onTagAdded: () => dispatch(Action.tagAdded(v4())),
         onTagRemoved: (id) => () => dispatch(Event.tagRemoved(id)),
-        onTagChanged: (id) => (e) => dispatch(Action.changeTag(id, e.target.value))
+        onTagChanged: (id) => (e) => dispatch(Event.tagChanged(id, e.target.value))
     }
 }
 export default connectAdvanced(sfDataEntry)(DataEntry)

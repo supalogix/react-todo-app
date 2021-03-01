@@ -2,7 +2,7 @@ import cx from "classnames"
 import {createSelector} from "reselect"
 
 export const enableReplenisableStyle = createSelector(
-    state => state.productManagement.replenisable,
+    state => state.productManagement.replenishable,
     replenishable => cx(
         "pde_input__button", 
         {
@@ -13,7 +13,7 @@ export const enableReplenisableStyle = createSelector(
 );
 
 export const disableReplenishableStyle = createSelector(
-    state => state.productManagement.replenisable,
+    state => state.productManagement.replenishable,
     replenishable => cx(
         "pde_input__button", 
         {

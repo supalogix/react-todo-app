@@ -40,3 +40,25 @@ export const tagChanged = (tagId, tagName) => ({
         tagName
     }
 })
+
+Type.ReplenishableChanged = "Replenishable Changed"
+export const replenishableChanged = (value) => ({
+    type: Type.ReplenishableChanged,
+    payload: {
+        value
+    }
+})
+
+Type.ProductStatusChanged = "Product Status Changed"
+export const productStatusChanged = (value) => ({
+    type: Type.ProductStatusChanged,
+    payload: {
+        value
+    }
+})
+
+Type.ReceiveProductDetails = "Receive Product Details"
+export const receiveProductDetails = payload => ({
+    type: Type.ReceiveProductDetails,
+    payload
+})

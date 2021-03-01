@@ -79,7 +79,7 @@ export const Ac = {
         "PM-013"
     ],
     actions: [
-        Action.sendProductDetails({
+        Event.receiveProductDetails({
             status: "active", // "active" | "archived" | "draft",
             title: "IPod Nano - 8GB",
             tags: [
@@ -211,7 +211,7 @@ export const Af = {
 
     ],
     actions: [
-        Action.changeReplenishable(false)
+        Event.replenishableChanged(false)
     ],
     executePrecondition: (state) => {
         expect(state.productManagement.mode).to.equal(
@@ -240,7 +240,7 @@ export const Ag = {
 
     ],
     actions: [
-        Action.changeProductStatus("draft")
+        Event.productStatusChanged("draft")
     ],
     executePrecondition: (state) => {
         expect(state.productManagement.mode).to.equal(

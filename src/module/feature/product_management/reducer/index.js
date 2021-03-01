@@ -29,11 +29,11 @@ export const productManagement = produce((draft, action) => {
             draft.tagName[action.payload.tagId] = action.payload.tagName
             break;
 
-        case Action.CHANGE_REPLENISHABLE:
+        case Event.Type.ReplenishableChanged:
             draft.replenishable = action.payload.value
             break;
 
-        case Action.CHANGE_PRODUCT_STATUS:
+        case Event.Type.ProductStatusChanged:
             draft.productStatus = action.payload.value
             break;
 
@@ -46,7 +46,7 @@ export const productManagement = produce((draft, action) => {
             draft.errorMessage = action.payload.message
             break;
 
-        case Action.SEND_PRODUCT_DETAILS:
+        case Event.Type.ReceiveProductDetails:
             draft.id = action.payload.id
             draft.title = action.payload.title
             draft.vendor = action.payload.vendor
