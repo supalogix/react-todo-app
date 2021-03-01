@@ -6,6 +6,10 @@ import * as Action from "../action"
 import * as Event from "../event"
 import {expect} from "chai"
 
+export const getAllActions = simulation => simulation.reduce((actions, node) => {
+    return actions.concat(node.actions)
+})
+
 export const A = {
     id: "A",
     name: "Enter Page",
@@ -286,12 +290,11 @@ export const I = {
         Action.changeTag("a", "")
     ],
     executePrecondition: (state) => {
+    },
+    executePostcondition: (state) => {
         expect(state.productManagement.tagName.a).to.equal(
             ""
         );
-    },
-    executePostcondition: (state) => {
-
     },
     story: (store) => {
         return <Provider store={store}>
@@ -408,5 +411,5 @@ export const M = {
 export const simulations = [
     [A, B, C, D, M, L],
     [A, B, C, E, F, G, H, I],
-    [A, B, C, J, K]
+    [A, B, C, J, K,]
 ];
