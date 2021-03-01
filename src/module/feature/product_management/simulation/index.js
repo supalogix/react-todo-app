@@ -10,8 +10,8 @@ export const getAllActions = simulation => simulation.reduce((actions, node) => 
     return actions.concat(node.actions)
 })
 
-export const A = {
-    id: "A",
+export const Aa = {
+    id: "Aa",
     name: "Enter Page",
     description: [
 
@@ -45,8 +45,8 @@ export const A = {
     },
 }
 
-export const B = {
-    id: "B",
+export const Ab = {
+    id: "Ab",
     name: "Get Product Details",
     description: [
     ],
@@ -71,8 +71,8 @@ export const B = {
     },
 }
 
-export const C = {
-    id: "C",
+export const Ac = {
+    id: "Ac",
     name: "Recieve Product Details",
     description: [ ],
     acceptanceCriteria: [
@@ -143,8 +143,8 @@ export const C = {
     },
 }
 
-export const D = {
-    id: "D",
+export const Ad = {
+    id: "Ad",
     name: "Change title to empty string",
     description: [
 
@@ -172,8 +172,8 @@ export const D = {
     },
 }
 
-export const E = {
-    id: "E",
+export const Ae = {
+    id: "Ae",
     name: "Change vendor to empty string",
     description: [
 
@@ -201,8 +201,8 @@ export const E = {
     },
 }
 
-export const F = {
-    id: "F",
+export const Af = {
+    id: "Af",
     name: "Set Replenishable to false",
     description: [
 
@@ -230,8 +230,8 @@ export const F = {
     },
 }
 
-export const G = {
-    id: "G",
+export const Ag = {
+    id: "Ag",
     name: "Set Product to Draft",
     description: [
 
@@ -260,8 +260,8 @@ export const G = {
     },
 }
 
-export const H = {
-    id: "H",
+export const Ah = {
+    id: "Ah",
     name: "Change first tag to 'Tag 1'",
     description: [
 
@@ -290,8 +290,8 @@ export const H = {
     },
 }
 
-export const I = {
-    id: "I",
+export const Ai = {
+    id: "Ai",
     name: "Change first tag to empty string",
     description: [
     ],
@@ -318,8 +318,8 @@ export const I = {
     },
 }
 
-export const J = {
-    id: "J",
+export const Aj = {
+    id: "Aj",
     name: "Change first tag to 'Flash Memory'",
     description: [
 
@@ -348,8 +348,8 @@ export const J = {
     },
 }
 
-export const K = {
-    id: "K",
+export const Ak = {
+    id: "Ak",
     name: "Add a new tag",
     description: [
 
@@ -378,8 +378,8 @@ export const K = {
     },
 }
 
-export const L = {
-    id: "L",
+export const Al = {
+    id: "Al",
     name: "Remove first tag",
     description: [
 
@@ -405,8 +405,8 @@ export const L = {
     },
 }
 
-export const M = {
-    id: "M",
+export const Am = {
+    id: "Am",
     name: "Change title to 'Some Title'",
     description: [
 
@@ -437,7 +437,7 @@ export const M = {
 
 
 export const simulations = [
-    [A, B, C, D, M, L],
-    [A, B, C, E, F, G, H, I],
-    [A, B, C, J, K,]
+    [Aa, Ab, Ac, Ad, Am, Al],
+    [Aa, Ab, Ac, Ae, Af, Ag, Ah, Ai],
+    [Aa, Ab, Ac, Aj, Ak]
 ];
