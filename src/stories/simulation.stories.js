@@ -2,8 +2,6 @@ import {storiesOf} from "@storybook/react"
 import * as reducer from "@app/feature/product_management/reducer"
 import {createStore, combineReducers} from "redux"
 import {simulations} from "@app/feature/product_management/simulation"
-import "../index.css"
-
 
 const getPath = simulation => {
     let path = "";
