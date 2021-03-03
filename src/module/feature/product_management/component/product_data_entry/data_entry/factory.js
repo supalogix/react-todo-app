@@ -1,9 +1,9 @@
 import React, {createElement as e} from "react"
 import classNames from 'classnames';
 
-export const createTagAttributes = (tag) => {
+export const createTagAttributes = (props, tag) => {
     return {
-        Tag: { 
+        container: { 
             key: tag.id,
             className: `
                 mr-1 
@@ -21,7 +21,7 @@ export const createTagAttributes = (tag) => {
                 text-light-blue-700
             `
         },
-        Input: {
+        textbox: {
             className: `
                 absolute 
                 focus:ring-0 
@@ -31,9 +31,37 @@ export const createTagAttributes = (tag) => {
                 text-sm 
                 font-medium 
                 w-full
-            ` 
+            `, 
+            type:"text",
+            defaultValue:tag.tagName,
+            onChange:props.onTagChanged(tag.id),
+            onBlur: (event) => {
+                if (!event.target.value) {
+                    props.onTagRemoved(tag.id)
+                }
+            }
         },
-        Button: {
+    }
+}
+
+export const createTags = props => props.tags.map(tag => {
+    const attr = createTagAttributes(props, tag);
+    const TagButton = createTagButton(props, tag);
+
+    // I am experimenting with not using jsx to improve
+    // compilation speed. I am not sure if this is a good
+    // or bad thing.
+    return e("span", attr.container, [
+        tag.tagName,
+        e("input", attr.textbox),
+        TagButton
+    ]);
+})
+
+export function createTagButton(props, tag)
+{
+    const attr = { 
+        button: {
             className: `
                 relative 
                 z-10 
@@ -51,35 +79,29 @@ export const createTagAttributes = (tag) => {
                 focus:outline-none 
                 focus:bg-light-blue-500 
                 focus:text-white
-            `
+            `,
+            onClick: props.onTagRemoved(tag.id), 
+            type:"button"
+        },
+        iconContainer: {
+            className: "h-2 w-2", 
+            stroke: "currentColor", 
+            fill: "none", 
+            viewBox: "0 0 8 8"
+        },
+        icon: {
+            strokeLinecap: "round",
+            strokeWidth: "1.5",
+            d: "M1 1l6 6m0-6L1 7"
         }
-    }
+    };
+
+    return e("button", attr.button, [
+        e("svg", attr.iconContainer, [
+            e("path", attr.icon)
+        ])
+    ])
 }
-
-export const createTags = props => props.tags.map(tag => {
-    const handleBlur = (event) => {
-        if (!event.target.value) {
-            props.onTagRemoved(tag.id)
-        }
-    }
-
-    const attributes = createTagAttributes(tag)
-
-    return <span {...attributes.Tag}>
-        {tag.tagName}
-        <input 
-            {...attributes.Input}
-            type="text" 
-            defaultValue={tag.tagName} 
-            onChange={props.onTagChanged(tag.id)} 
-            onBlur={handleBlur} />
-        <button onClick={props.onTagRemoved(tag.id)} type="button" {...attributes.Button}>
-            <svg className="h-2 w-2" stroke="currentColor" fill="none" viewBox="0 0 8 8">
-                <path strokeLinecap="round" strokeWidth="1.5" d="M1 1l6 6m0-6L1 7"/>
-            </svg>
-        </button>
-    </span>
-})
 
 export const createTitleError = hasError => {
     if(hasError)
