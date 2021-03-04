@@ -7,6 +7,10 @@ module.exports = {
     extend: {
       colors: {
         'light-blue': colors.lightBlue
+      },
+      minHeight: {
+        '6': '1.5rem',
+        '495px': '495px'
       }
     },
   },
