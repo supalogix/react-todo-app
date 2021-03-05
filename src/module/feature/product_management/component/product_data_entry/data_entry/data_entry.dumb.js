@@ -1,12 +1,6 @@
 import React from "react"
-import { connectAdvanced } from "react-redux"
-import * as Action from "../../../action"
-import * as Event from "../../../event"
-import * as Selector from "../../../selector"
-import {v4} from "uuid"
 import PropTypes from "prop-types"
 import * as Factory from "./factory"
-import * as StyleSelector from "./styleSelector"
 import classNames from 'classnames';
 
 export const DataEntry = (props) => {
@@ -14,16 +8,18 @@ export const DataEntry = (props) => {
     const Vendor = Factory.createVendor(props)
     const Tags = Factory.createTags(props)
 
-    const replenishableButtonCssClasses = classNames({
-        "ml-4 relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none": true,
-        "bg-green-400": props.replenishable,
-        "bg-gray-200": !props.replenishable
-    })
-    const replenishableSpanCssClasses = classNames({
-        "translate-x-0 pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200": true,
-        "translate-x-5": props.replenishable,
-        "translate-x-0": !props.replenishable
-    })
+    const replenishableClasses = {
+       button: classNames({
+            "ml-4 relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none": true,
+            "bg-green-400": props.replenishable,
+            "bg-gray-200": !props.replenishable
+       }),
+       span: classNames({
+            "translate-x-0 pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200": true,
+            "translate-x-5": props.replenishable,
+            "translate-x-0": !props.replenishable
+       })
+    }
 
     return <div className="max-w-lg border border-gray-100 rounded-2xl p-8">
         {Title}
@@ -43,11 +39,11 @@ export const DataEntry = (props) => {
             <span className="text-sm font-medium text-gray-900">Replenishable</span>
             <button type="button"
                     onClick={props.onReplenishableChanged(!props.replenishable)}
-                    className={replenishableButtonCssClasses}
+                    className={replenishableClasses.button}
                     aria-pressed="false">
                 <span className="sr-only">Use setting</span>
                 <span aria-hidden="true"
-                      className={replenishableSpanCssClasses} />
+                      className={replenishableClasses.span} />
             </button>
         </div>
         <div className="mt-6">
@@ -91,43 +87,4 @@ DataEntry.defaultProps = {
     onTagChanged: () => {}
 }
 
-export const sfDataEntry = dispatch => state => {
-    const {
-        errorMessage,
-        id,
-        mode,
-        title,
-        vendor,
-        replenishable,
-        productStatus,
-    } = state.productManagement;
-
-    return {
-        styles: {
-            enableReplenishable: StyleSelector.enableReplenisableStyle(state),
-            disableReplenishable: StyleSelector.disableReplenishableStyle(state),
-            archived: StyleSelector.styleArchived(state),
-            draft: StyleSelector.styleDraft(state),
-            active: StyleSelector.styleActive(state)
-        },
-        errorMessage,
-        id,
-        mode,
-        title,
-        titleStatus: Selector.titleStatus(state),
-        vendor,
-        vendorStatus: Selector.vendorStatus(state),
-        replenishable,
-        productStatus,
-        tags: Selector.tags(state),
-        onTitleChanged: (e) => dispatch(Event.titleChanged(e.target.value)),
-        onVendorChanged: (e) => dispatch(Event.vendorChanged(e.target.value)),
-        onReplenishableChanged: (value) => () => dispatch(Event.replenishableChanged(value)),
-        onStatusChanged: (e) => dispatch(Event.productStatusChanged(e.target.value)),
-        onTagAdded: () => dispatch(Event.tagAdded(v4())),
-        onTagRemoved: (id) => () => dispatch(Event.tagRemoved(id)),
-        onTagChanged: (id) => (e) => dispatch(Event.tagChanged(id, e.target.value))
-    }
-}
-
-export default connectAdvanced(sfDataEntry)(DataEntry)
+export default DataEntry;

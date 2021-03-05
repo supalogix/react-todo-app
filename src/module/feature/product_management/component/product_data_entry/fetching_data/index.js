@@ -58,4 +58,5 @@ export const FetchingData = (props) => <div className="border border-gray-100 w-
         </g>
     </svg>
 </div>
+
 export default connectAdvanced(dispatch => state => ({}))(FetchingData)

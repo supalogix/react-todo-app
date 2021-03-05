@@ -4,7 +4,7 @@ import { ModeEnum } from "@app/feature/product_management/enum"
 import NotStarted from "./not_started"
 import FetchingData from "./fetching_data"
 import ErrorFetchingData from "./error_fetching_data"
-import DataEntry from "./data_entry"
+import DataEntry from "./data_entry/data_entry.smart"
 
 export const ProductDataEntry = (props) => {
     switch(props.mode)
