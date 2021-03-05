@@ -2,146 +2,11 @@ import React from "react"
 import ProductManagement from "@app/feature/product_management/component"
 import {ModeEnum} from "@app/feature/product_management/enum"
 import {Provider} from "react-redux"
-import * as Action from "../action"
-import * as Event from "../event"
+import * as Event from "@app/feature/product_management/event"
 import {expect} from "chai"
-
-export const getAllActions = simulation => simulation.reduce((actions, node) => {
-    return actions.concat(node.actions)
-})
-
-export const Aa = {
-    id: "Aa",
-    name: "Enter Product Data Entry Page",
-    description: [
-
-    ],
-    acceptanceCriteria: [
-        "PM-009"
-    ],
-    actions: [
-    ],
-    executePrecondition: (state) => {
-    },
-    executePostcondition: (state) => {
-        expect(state).to.deep.equal({
-            productManagement: {
-                errorMessage: "",
-                id: "",
-                mode: ModeEnum.NOT_STARTED,
-                productStatus: "active",
-                replenishable: true,
-                title: "",
-                tagIds: [],
-                tagName: {},
-                vendor: "",
-            }
-        })
-    },
-    story: (store) => {
-        return <Provider store={store}>
-            <ProductManagement />
-        </Provider>
-    },
-}
-
-export const Ab = {
-    id: "Ab",
-    name: "Get Product Details",
-    description: [
-    ],
-    acceptanceCriteria: [
-        "PM-005"
-    ],
-    actions: [
-        Action.getProductDetails(1),
-    ],
-    executePrecondition: (state) => {
-
-    },
-    executePostcondition: (state) => {
-        expect(state.productManagement.mode).to.equal(
-            ModeEnum.FETCHING_DATA
-        );
-    },
-    story: (store) => {
-        return <Provider store={store}>
-            <ProductManagement />
-        </Provider>
-    },
-}
-
-export const Ac = {
-    id: "Ac",
-    name: "Recieve Product Details",
-    description: [ ],
-    acceptanceCriteria: [
-        "PM-013"
-    ],
-    actions: [
-        Event.receiveProductDetails({
-            status: "active", // "active" | "archived" | "draft",
-            title: "IPod Nano - 8GB",
-            tags: [
-                {
-                    id: "a",
-                    tagName: "Emotive"
-                }, 
-                {
-                    id: "b",
-                    tagName: "Flash Memory"
-                }, 
-                {
-                    id: "c",
-                    tagName: "MP3"
-                }, 
-                {
-                    id: "d",
-                    tagName: "Music"
-                },
-            ],
-            replenishable: true,
-            vendor: "Apple",
-            id: 1,
-        })
-    ],
-    executePrecondition: (state) => { },
-    executePostcondition: (state) => {
-        expect(state.productManagement.mode).to.equal(
-            ModeEnum.EDITING_DATA
-        );
-        expect(state.productManagement.productStatus).to.equal(
-            "active"
-        );
-        expect(state.productManagement.title).to.equal(
-            "IPod Nano - 8GB"
-        );
-        expect(state.productManagement.vendor).to.equal(
-            "Apple"
-        );
-        expect(state.productManagement.replenishable).to.equal(
-            true
-        );
-        expect(state.productManagement.tagIds).to.deep.equal([
-            "a",
-            "b",
-            "c",
-            "d"
-        ]);
-        expect(state.productManagement.tagName).to.deep.equal({
-            "a": "Emotive",
-            "b": "Flash Memory",
-            "c": "MP3",
-            "d": "Music"
-        });
-
-    },
-    story: (store) => {
-        return <Provider store={store}>
-            <ProductManagement />
-        </Provider>
-    },
-}
+import {Aa} from "./step/Aa"
+import {Ab} from "./step/Ab"
+import {Ac} from "./step/Ac"
 
 export const Ad = {
     id: "Ad",
@@ -435,9 +300,22 @@ export const Am = {
     },
 }
 
+export const getAllActions = simulation => simulation.reduce((actions, node) => {
+    return actions.concat(node.actions)
+})
+
+export const scenario1 = [Aa, Ab, Ac, Ad, Am, Al];
+export const scenario2 = [Aa, Ab, Ac, Ae, Af, Ag, Ah, Ai];
+export const scenario3 = [Aa, Ab, Ac, Aj, Ak];
+
+export const scenarios = {
+    scenario1,
+    scenario2,
+    scenario3,
+}
 
 export const simulations = [
-    [Aa, Ab, Ac, Ad, Am, Al],
-    [Aa, Ab, Ac, Ae, Af, Ag, Ah, Ai],
-    [Aa, Ab, Ac, Aj, Ak]
+    scenario1,
+    scenario2,
+    scenario3
 ];
