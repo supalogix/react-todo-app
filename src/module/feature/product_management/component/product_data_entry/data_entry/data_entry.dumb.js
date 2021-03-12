@@ -78,6 +78,13 @@ DataEntry.propTypes = {
 }
 
 DataEntry.defaultProps = {
+    title: "",
+    titleStatus: "",
+    vendor: "",
+    vendorStatus: "",
+    replenishable: true,
+    productStatus: "",
+    tags: [],
     onTitleChanged: () => {},
     onVendorChanged: () => {},
     onReplenishableChanged: () => {},
