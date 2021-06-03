@@ -2,8 +2,19 @@ import React from "react"
 import PropTypes from "prop-types"
 import * as Factory from "./factory"
 import classNames from 'classnames';
+import assert from "assert"
+import check from "check-types"
 
 export const DataEntry = (props) => {
+
+    //assert(check.string(props.title))
+    //assert(check.string(props.titleStatus))
+    //assert(check.string(props.vendor))
+    //assert(check.string(props.vendorStatus))
+    //assert(check.boolean(props.replenishable))
+    //assert(check.string(props.productStatus))
+    //assert(check.array(props.tags))
+
     const Title = Factory.createTitle(props)
     const Vendor = Factory.createVendor(props)
     const Tags = Factory.createTags(props)

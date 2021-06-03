@@ -304,6 +304,63 @@ export const getAllActions = simulation => simulation.reduce((actions, node) => 
     return actions.concat(node.actions)
 })
 
+export const list = {
+    Aa,
+    Ab,
+    Ac,
+    Ad,
+    Ae,
+    Af,
+    Ag,
+    Ah,
+    Ai,
+    Aj,
+    Al,
+    Am,
+}
+
+export const list1 = [
+    "Aa", 
+    "Ab", 
+    "Ac", 
+    "Ad", 
+    "Am", 
+    "Al",
+];
+
+export const list2 = [
+    "Aa", 
+    "Ab", 
+    "Ac", 
+    "Ae", 
+    "Af", 
+    "Ag", 
+    "Ah", 
+    "Ai"
+];
+
+const lists = {
+    list1,
+    list2
+}
+
+export const getActions = (listName, step) => {
+    let actions = [];
+    const _list = lists[listName]
+
+    for(const key of _list)
+    {
+        actions = actions.concat(list[key].actions);
+
+        if(key === step)
+        {
+            break;
+        }
+    }
+
+    return actions;
+}
+
 export const scenario1 = [Aa, Ab, Ac, Ad, Am, Al];
 export const scenario2 = [Aa, Ab, Ac, Ae, Af, Ag, Ah, Ai];
 export const scenario3 = [Aa, Ab, Ac, Aj, Ak];

@@ -141,7 +141,7 @@ export const createTitle = props => {
         <label className="block text-sm font-medium text-gray-700">Product</label>
         <div className="mt-1 relative rounded-md shadow-sm">
             <input 
-                id="title"
+                data-testid="title"
                 type="text"
                 value={props.title}
                 onChange={props.onTitleChanged}

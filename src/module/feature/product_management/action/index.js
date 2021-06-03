@@ -19,3 +19,21 @@ export const saveChanges = () => ({
     type: SAVE_CHANGES,
     payload: { }
 })
+
+
+export const DO_SOMETHING = `Do Something`;
+export const doSomething = ({
+    firstname,
+    lastname,
+    email
+}) => ({
+    type: "",
+    payload: {
+        firstname,
+        lastname,
+        email
+    }
+})
+
+
+

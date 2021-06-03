@@ -4,14 +4,18 @@ import {DataEntry} from "./data_entry.dumb"
 
 describe("DataEntry", () => {
     it("verifies default behavior", () => {
-        const { container, getByText, debug } = render(<DataEntry />)
-        expect(container.querySelector("#title")).toHaveValue("");
+        const { getByTestId, debug } = render(<DataEntry />)
+
+        expect(getByTestId("title")).toHaveValue("");
     })
 
     it("verifies change in title behavior", () => {
-        const { container, getByText, debug } = render(<DataEntry
-            title="title"
-             />)
-        expect(container.querySelector("#title")).toHaveValue("title");
+        const props = {
+            title: "title"
+        }
+
+        const { getByTestId, debug } = render(<DataEntry {...props} />);
+
+        expect(getByTestId("title")).toHaveValue("title");
     })
 })
