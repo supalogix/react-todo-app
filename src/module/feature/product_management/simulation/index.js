@@ -339,16 +339,39 @@ export const list2 = [
     "Ai"
 ];
 
-const lists = {
+const listNames = {
     list1,
     list2
 }
 
-export const getActions = (listName, step) => {
-    let actions = [];
-    const _list = lists[listName]
+export function getNavigationMap(sortOrder)
+{
+    const previousMap = {};
+    const nextMap = {};
 
-    for(const key of _list)
+    let previousKey = null;
+    for(const key of sortOrder)
+    {
+        previousMap[key] = previousKey;
+        nextMap[previousKey] = key;
+        previousKey = key;
+    }
+
+    return {
+        previousMap,
+        nextMap
+    }
+}
+
+export function getSortOrder(listName)
+{
+    return listNames[listName];
+}
+
+export const getActions = (list, sortOrder, step) => {
+    let actions = [];
+
+    for(const key of sortOrder)
     {
         actions = actions.concat(list[key].actions);
 

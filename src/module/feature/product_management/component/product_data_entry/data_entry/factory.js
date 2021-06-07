@@ -121,35 +121,67 @@ export const createTitleError = hasError => {
     }
 }
 
-export const createTitle = props => {
-    const hasError = props.titleStatus === 1;
+export const TitleErrorIcon = ({hasError}) => {
+    if(hasError)
+    {
+        return <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+            <svg className="h-5 w-5 text-red-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                    fill="currentColor" aria-hidden="true">
+                <path fillRule="evenodd"
+                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+                        clipRule="evenodd"/>
+            </svg>
+        </div>
+    }
+    else
+    {
+        return null;
+    }
+}
 
+export const TitleInput = (props) => {
     const inputCssClasses = classNames({
         'block w-full pr-10 sm:text-sm rounded-md': true,
-        'shadow-sm focus:ring-light-blue-500 focus:border-light-blue-500 border-gray-300': !hasError,
-        'border-red-300 text-red-900 focus:outline-none focus:ring-red-500 focus:border-red-500': hasError
+        'shadow-sm focus:ring-light-blue-500 focus:border-light-blue-500 border-gray-300': !props.hasError,
+        'border-red-300 text-red-900 focus:outline-none focus:ring-red-500 focus:border-red-500': props.hasError
     });
 
+    return <input 
+        data-testid="title"
+        type="text"
+        value={props.title}
+        onChange={props.onTitleChanged}
+        className={inputCssClasses}
+        aria-invalid="true" aria-describedby="email-error" />
+}
+
+export const TitleErrorText = (props) => {
     const errorCssClasses = classNames({
         'mt-1 text-sm text-red-600': true,
-        'hidden': !hasError
+        'hidden': !props.hasError
     });
 
-    const TitleError = createTitleError(hasError)
+    return <p className={errorCssClasses}>Product Name cannot be empty</p>
+}
+
+export const Title = (props) => {
+    const hasError = props.titleStatus === 1;
 
     return <div>
         <label className="block text-sm font-medium text-gray-700">Product</label>
         <div className="mt-1 relative rounded-md shadow-sm">
-            <input 
-                data-testid="title"
-                type="text"
-                value={props.title}
-                onChange={props.onTitleChanged}
-                className={inputCssClasses}
-                aria-invalid="true" aria-describedby="email-error" />
-            {TitleError}
+            <TitleInput
+                title={props.title}
+                onTitleChanged={props.onTitleChanged}
+                hasError={props.hasError}
+                />
+            <TitleErrorIcon
+                hasError={hasError}
+                />
         </div>
-        <p className={errorCssClasses}>Product Name cannot be empty</p>
+        <TitleErrorText 
+            hasError={hasError}
+            />
     </div>
 }
 

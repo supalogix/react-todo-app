@@ -6,16 +6,7 @@ import assert from "assert"
 import check from "check-types"
 
 export const DataEntry = (props) => {
-
-    //assert(check.string(props.title))
-    //assert(check.string(props.titleStatus))
-    //assert(check.string(props.vendor))
-    //assert(check.string(props.vendorStatus))
-    //assert(check.boolean(props.replenishable))
-    //assert(check.string(props.productStatus))
-    //assert(check.array(props.tags))
-
-    const Title = Factory.createTitle(props)
+    const Title = <Factory.Title {...props} />
     const Vendor = Factory.createVendor(props)
     const Tags = Factory.createTags(props)
 
@@ -31,6 +22,11 @@ export const DataEntry = (props) => {
             "translate-x-0": !props.replenishable
        })
     }
+
+    const SaveButton = <button type="button"
+            className="mt-12 flex items-center px-6 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-500 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+        Save
+    </button>
 
     return <div className="max-w-lg border border-gray-100 rounded-2xl p-8">
         {Title}
@@ -68,10 +64,7 @@ export const DataEntry = (props) => {
                 </svg>
             </button>
         </div>
-        <button type="button"
-                className="mt-12 flex items-center px-6 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-500 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
-            Save
-        </button>
+        {SaveButton}
     </div>
 }
 
