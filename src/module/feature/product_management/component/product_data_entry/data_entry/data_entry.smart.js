@@ -1,11 +1,15 @@
-import React from "react"
-import { connectAdvanced } from "react-redux"
+import React, {createElement as e} from "react"
+import { useDispatch, useSelector } from "react-redux"
 import * as Event from "../../../event"
 import * as Selector from "../../../selector"
 import {v4} from "uuid"
 import {DataEntry} from "./data_entry.dumb"
 
-export const selectorFactory = dispatch => state => {
+export const SmartDataEntry = () => {
+    const productManagement = useSelector(state => state.productManagement);
+    const state = useSelector(state => state);
+    const dispatch = useDispatch();
+
     const {
         errorMessage,
         id,
@@ -14,9 +18,9 @@ export const selectorFactory = dispatch => state => {
         vendor,
         replenishable,
         productStatus,
-    } = state.productManagement;
+    } = productManagement;
 
-    return {
+    const props = {
         errorMessage,
         id,
         mode,
@@ -35,6 +39,8 @@ export const selectorFactory = dispatch => state => {
         onTagRemoved: (id) => () => dispatch(Event.tagRemoved(id)),
         onTagChanged: (id) => (e) => dispatch(Event.tagChanged(id, e.target.value))
     }
+
+    return e(DataEntry, props);
 }
 
-export default connectAdvanced(selectorFactory)(DataEntry)
+export default SmartDataEntry;

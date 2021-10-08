@@ -59,5 +59,7 @@ export const productManagement = produce((draft, action) => {
                 draft.tagName[tag.id] = tag.tagName
             })
             break;
+        
+        default:
     }
 }, initialState)

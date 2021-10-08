@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@elastic/apm-rum": "^5.9.1",
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
     "@fortawesome/react-fontawesome": "^0.1.14",
@@ -69,6 +70,8 @@
     "tailwindcss": "npm:@tailwindcss/postcss7-compat"
   },
   "workspaces": [
+    "./module/feature",
+    "./module/shared",
     "./src/module/feature",
     "./src/module/shared"
   ]
